@@ -11,6 +11,8 @@ export abstract class BaseService{
   protected UrlServiceProdutosV1: string = environment.apiUrlProdutosV1;
   protected UrlServiceContasV1: string = environment.apiUrlContasV1;
   protected UrlServiceGatewayV1: string = environment.apiUrlGatewayV1;
+  protected UrlServicePedidoV1: string = environment.apiUrlPedidoV1;
+
   protected UrlMovimentacaoFinanceiraV1: string = environment.apiUrlMovimentacaoV1;
 
 

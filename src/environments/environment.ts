@@ -8,7 +8,10 @@ export const environment = {
   apiUrlClientesV1: 'https://localhost:44302/api/',
   apiUrlProdutosV1: 'https://localhost:44329/api/',
   apiUrlContasV1: 'http://localhost:5401/api/',
-  apiUrlGatewayV1: 'http://localhost:5501/api/',
+  apiUrlGatewayV1: 'https://localhost:44374/api-gateway/',
+  apiUrlPedidoV1: 'https://localhost:44334/api/',
+
+
   apiUrlMovimentacaoV1: 'http://localhost:5701/api/',
   imagensUrl: 'add url'
 };

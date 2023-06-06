@@ -1,1 +1,101 @@
-<p>lista works!</p>
+<div class="container main-container">
+  <ngx-spinner bdColor = "rgba(0,0,0,0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true">
+    <p style="color: white" > carregando...</p>
+  </ngx-spinner>
+  <h1>Lista de Pedidos</h1>
+  <div class="alert alert-danger" *ngIf="errors.length > 0">
+    <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+    <ul>
+      <li *ngFor="let error of errors">{{ error }}</li>
+    </ul>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col">
+  <p>
+    <a class="btn btn-info" [routerLink]="['/pedidos/adicionar-novo']"
+      >Novo Pedido</a
+    >
+  </p>
+</div>
+<div class="col">
+  <select class="form-control" id="status" type="text" name="status"
+        (change)="onStatusId($event.target)" [value]="2">
+        <option value="1">
+           Todos
+        </option>
+        <option value="2">
+          Não Concluídos
+       </option>
+       <option value="3">
+        Concluídos
+     </option>
+      </select>
+
+</div>
+
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Código</th>
+        <th>Cliente</th>
+        <th>Status</th>
+        <th>Solicitação</th>
+        <th>Autorização</th>
+        <th>Conclusão</th>
+        <th>Valor</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pedido of pedidos">
+        <td class="col col-lg-1" style="font-weight: bold">
+          {{ pedido.codigo }}
+        </td>
+        <td class="col col-lg-2">
+          {{ pedido.clienteNome }}
+        </td>
+        <td class="col col-lg-1">
+          {{pedido.pedidoStatus == 1 ? "Rascunho" : pedido.pedidoStatus == 2 ?  "Emitido" : pedido.pedidoStatus == 3 ? "Autorizado" : pedido.pedidoStatus == 4 ?  "Percurso" : pedido.pedidoStatus == 5 ? "Entregue" : "Cancelado"  }}
+        </td>
+        <td class="col col-lg-1">
+          {{ pedido.dataCadastro | date: "dd/MM/yyyy hh:mm" }}
+        </td>
+        <td class="col col-lg-1">
+          {{ pedido.dataAutorizacao | date: "hh:mm" }}
+        </td>
+        <td class="col col-lg-1">
+          {{ pedido.dataConclusao | date: "hh:mm" }}
+        </td>
+        <td class="col col-lg-1">
+          {{ pedido.valorTotal| currency: "BRL":"symbol":"1.2-2":"pt" }}
+        </td>
+        <td class="text-right col col-lg-2">
+          <button class="btn btn-success" (click)="AlterarStatusPedido($event, pedido)">
+            <span class="fa fa-play"></span>
+          </button>
+          &nbsp;
+          <a
+            class="btn btn-info"
+            [routerLink]="['/produto/detalhes', pedido.idPedido]"
+          >
+            <span class="fa fa-search"></span> </a
+          >&nbsp;
+          <a
+            class="btn btn-warning"
+            [routerLink]="['/produtos/editar', pedido.idPedido]"
+          >
+            <span class="fa fa-pencil-alt"></span> </a
+          >&nbsp;
+          <a
+            class="btn btn-danger"
+            [routerLink]="['/produto/excluir', pedido.idPedido]"
+          >
+            <span class="fa fa-trash"></span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

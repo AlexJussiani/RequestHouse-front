@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit {
     this.errors = [];
     if(toast){
       toast.onHidden.subscribe(() => {
-        this.router.navigate(['/pedidos/entradas/listar-todos']);
+        this.router.navigate(['/pedidos/listar-todos']);
       });
     }
   }
