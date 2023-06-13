@@ -8,6 +8,7 @@ import { EditarComponent } from './editar/editar.component';
 import { PedidoAppComponent } from './pedido.app.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PedidoService } from './services/pedido.service';
+import { PedidoResolve } from './services/pedido.resolve';
 
 
 
@@ -26,7 +27,8 @@ import { PedidoService } from './services/pedido.service';
     NgxSpinnerModule
   ],
   providers:[
-    PedidoService
+    PedidoService,
+    PedidoResolve
   ]
 })
 export class PedidoModule { }
